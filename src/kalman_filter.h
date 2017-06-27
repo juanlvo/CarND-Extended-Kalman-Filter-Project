@@ -64,6 +64,12 @@ public:
    */
   void UpdateEKF(const Eigen::VectorXd &z);
 
+  /**
+   * Update every step of the kalman filter
+   * @param y The error vector
+   */
+  void KalmanFilter::Step(const VectorXd &y)
+
 };
 
 #endif /* KALMAN_FILTER_H_ */
