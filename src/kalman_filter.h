@@ -68,7 +68,7 @@ public:
    * Update every step of the kalman filter
    * @param y The error vector
    */
-  void KalmanFilter::Step(const VectorXd &y)
+  void Step(const Eigen::VectorXd &y);
 
 };
 

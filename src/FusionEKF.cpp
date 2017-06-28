@@ -2,11 +2,13 @@
 #include "tools.h"
 #include "Eigen/Dense"
 #include <iostream>
+#define EPS 0.0001
 
 using namespace std;
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::vector;
+
 
 /*
  * Constructor.
@@ -137,8 +139,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   // Noise covariance matrix computation
   // Noise values from the task
-  float noise_ax = 9.0;
-  float noise_ay = 9.0;
+  float noise_ax = 5;
+  float noise_ay = 5;
 
   // Compute some useful values to speed up calculations of Q
   float dt_2 = dt * dt; //dt^2
@@ -166,8 +168,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // Radar updates
-    H_radar_ = tools.CalculateJacobian(ekf_.x_);
-    ekf_.H_ = H_radar_;
+	ekf_.H_ = tools.CalculateJacobian(ekf_.x_);
     ekf_.R_ = R_radar_;
     ekf_.UpdateEKF(measurement_pack.raw_measurements_);
   } else {

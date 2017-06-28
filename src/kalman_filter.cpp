@@ -17,6 +17,14 @@ void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
   Q_ = Q_in;
 }
 
+void KalmanFilter::Predict(){
+
+	x_ = F_ * x_ ; // There is no external motion, so, we do not have to add "+u"
+    MatrixXd Ft = F_.transpose();
+    P_ = F_ * P_ * Ft + Q_;
+
+}
+
 void KalmanFilter::Update(const VectorXd &z) {
   /**
   TODO:
