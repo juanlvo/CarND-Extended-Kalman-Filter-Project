@@ -139,8 +139,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   // Noise covariance matrix computation
   // Noise values from the task
-  float noise_ax = 5;
-  float noise_ay = 5;
+  float noise_ax = 9;
+  float noise_ay = 9;
 
   // Compute some useful values to speed up calculations of Q
   float dt_2 = dt * dt; //dt^2
