@@ -1,4 +1,5 @@
 #include "kalman_filter.h"
+#include <cmath>
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
@@ -51,18 +52,23 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   // Recalculate x object state to rho, theta, rho_dot coordinates
 
 	  float rho_pred    =  pow(pow(x_[0],2) + pow(x_[1],2),0.5);
-	  float phi_pred    =  0.0;
-	  if (fabs(x_[0]) > 0.01) {
+	  float phi_pred    =  0.0001;
+	  if (fabs(x_[0]) > 0.0001) {
 	    phi_pred  = atan2(x_[1],x_[0]);
 	  }
-	  float rhodot_pred = 0.0;
-	  if (fabs(rho_pred) > 0.01) {
+	  float rhodot_pred = 0.0001;
+	  if (fabs(rho_pred) > 0.0001) {
 	    rhodot_pred = (x_[0]*x_[2] + x_[1]*x_[3]) / rho_pred;
 	  }
 	  VectorXd z_pred(3);
 	  z_pred << rho_pred, phi_pred, rhodot_pred;
 
 	  VectorXd y = z - z_pred;
+	  if(y[1] > 2*M_PI) {
+		  y[1] = y[1] - 2*M_PI;
+	  } else if (y[1] < -2*M_PI) {
+		  y[1] = y[1] + 2*M_PI;
+	  }
 	  MatrixXd Ht = H_.transpose();
 
 	  MatrixXd S = H_ * P_ * Ht + R_;
