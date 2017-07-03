@@ -1,5 +1,5 @@
 # Extended Kalman Filter Project Starter Code
-Self-Driving Car Engineer Nanodegree Program
+Self-Driving Car Engineer Nanodegree Program solution from Juan Luis Vivas Occhipinti
 
 In this project you will utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. Passing the project requires obtaining RMSE values that are lower that the tolerance outlined in the project rubric. 
 
@@ -89,30 +89,60 @@ More information is only accessible by people who are already enrolled in Term 2
 of CarND. If you are enrolled, see [the project resources page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/382ebfd6-1d55-4487-84a5-b6a5a4ba1e47)
 for instructions and the project rubric.
 
-## Hints!
+<table>
+	<tr>
+		<th>Criteria</th>
+		<th>Meets Specifications</th>
+	</tr>
+	<tr>
+		<td>Your code should compile</td>
+		<td>The code compile without errors with cmake and make.</td>
+	</tr>
+</table>
 
-* You don't have to follow this directory structure, but if you do, your work
-  will span all of the .cpp files here. Keep an eye out for TODOs.
+<table>
+	<tr>
+		<th>Criteria</th>
+		<th>Meets Specifications</th>
+	</tr>
+	<tr>
+		<td>px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] when using the file: "obj_pose-laser-radar-synthetic-input.txt which is the same data file the simulator uses for Dataset 1"</td>
+		<td>yes the algorithm show all the data, works in the dataset without any problem and in dataset 1 in las part is not predicting properly but the author doesn't have any idea how to improve it.</td>
+	</tr>
+</table>
 
-## Call for IDE Profiles Pull Requests
+<table>
+	<tr>
+		<th>Criteria</th>
+		<th>Meets Specifications</th>
+	</tr>
+	<tr>
+		<td>Your Sensor Fusion algorithm follows the general processing flow as taught in the preceding lessons.</td>
+		<td>All the step follow all the algorithms describe in the lessons</td>
+	</tr>
+	<tr>
+		<td>Your Kalman Filter algorithm handles the first measurements appropriately.</td>
+		<td>Yes without any problem.</td>
+	</tr>
+	<tr>
+		<td>Your Kalman Filter algorithm first predicts then updates.</td>
+		<td>Yes like was describe in the lessons</td>
+	</tr>
+	<tr>
+		<td>Your Kalman Filter can handle radar and lidar measurements.</td>
+		<td>Yes the algorithm can hadle it.</td>
+	</tr>
+</table>
 
-Help your fellow students!
+<table>
+	<tr>
+		<th>Criteria</th>
+		<th>Meets Specifications</th>		
+	</tr>
+	<tr>
+		<td>Your algorithm should avoid unnecessary calculations.</td>
+		<td>Yes the algorithm was clean it before to submit it.</td>
+	</tr>
+</table>
 
-We decided to create Makefiles with cmake to keep this project as platform
-agnostic as possible. Similarly, we omitted IDE profiles in order to we ensure
-that students don't feel pressured to use one IDE or another.
 
-However! We'd love to help people get up and running with their IDEs of choice.
-If you've created a profile for an IDE that you think other students would
-appreciate, we'd love to have you add the requisite profile files and
-instructions to ide_profiles/. For example if you wanted to add a VS Code
-profile, you'd add:
-
-* /ide_profiles/vscode/.vscode
-* /ide_profiles/vscode/README.md
-
-The README should explain what the profile does, how to take advantage of it,
-and how to install it.
-
-Regardless of the IDE used, every submitted project must
-still be compilable with cmake and make.

@@ -69,15 +69,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	  while (y[1] > M_PI) {
 		  y[1] = y[1]-M_PI;
 	  }
-	  while (y[1] < -(M_PI)) {
+	  /*while (y[1] < -(M_PI)) {
 		  y[1] = y[1]+M_PI;
-	  }
-
-	  /*if(y[1] > 2*M_PI) {
-		  y[1] = y[1] - 2*M_PI;
-	  } else if (y[1] < -2*M_PI) {
-		  y[1] = y[1] + 2*M_PI;
 	  }*/
+
 	  MatrixXd Ht = H_.transpose();
 
 	  MatrixXd S = H_ * P_ * Ht + R_;
@@ -92,9 +87,6 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 		  x_[1] = x_[1]-(8*M_PI);
 	  }
 
-	  while (x_[1] < -(5*M_PI)) {
-		  x_[1] = x_[1]+5*M_PI;
-	  }
 
 	  long x_size = x_.size();
 	  MatrixXd I = MatrixXd::Identity(x_size, x_size);
