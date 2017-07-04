@@ -66,12 +66,10 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	  VectorXd y = z - z_pred;
 
 	  //normalizing phi
-	  while (y[1] > M_PI) {
-		  y[1] = y[1]-M_PI;
-	  }
-	  /*while (y[1] < -(M_PI)) {
-		  y[1] = y[1]+M_PI;
-	  }*/
+	  // angle normalization
+	  while (y(1)> M_PI) y(1)-=2.*M_PI;
+	  while (y(1)<-M_PI) y(1)+=2.*M_PI;
+
 
 	  MatrixXd Ht = H_.transpose();
 
@@ -83,9 +81,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	  //new estimate
 	  x_ = x_ + (K * y);
 
-	  while (x_[1] > (8*M_PI)) {
+	  /*while (x_[1] > (8*M_PI)) {
 		  x_[1] = x_[1]-(8*M_PI);
-	  }
+	  }*/
 
 
 	  long x_size = x_.size();

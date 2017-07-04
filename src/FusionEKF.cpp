@@ -33,6 +33,8 @@ FusionEKF::FusionEKF() {
         0, 0.0009, 0,
         0, 0, 0.09;
 
+  H_laser_ << 1, 0, 0, 0,
+		  	  0, 1, 0, 0;
   /**
   TODO:
     * Finish initializing the FusionEKF.
@@ -139,7 +141,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   // Noise covariance matrix computation
   // Noise values from the task
-  float noise_ax = 3;
+  float noise_ax = 9;
   float noise_ay = 3;
 
   // Compute some useful values to speed up calculations of Q
