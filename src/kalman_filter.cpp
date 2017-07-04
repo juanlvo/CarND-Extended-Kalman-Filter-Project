@@ -81,11 +81,6 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	  //new estimate
 	  x_ = x_ + (K * y);
 
-	  /*while (x_[1] > (8*M_PI)) {
-		  x_[1] = x_[1]-(8*M_PI);
-	  }*/
-
-
 	  long x_size = x_.size();
 	  MatrixXd I = MatrixXd::Identity(x_size, x_size);
 	  P_ = (I - K * H_) * P_;
